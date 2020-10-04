@@ -1,3 +1,5 @@
+<!--อาจารย์ครับ ในฟอร์มส่วนของการ delete ผมต้องใส่ tag hidden ให้กับตัวแปร id, customerId, balance ไปด้วยนะครับ
+เพราะของผมมันมีปัญหาในการส่งค่า มันส่งจากหน้า html ไปเป็น null ตลอด เหมือนตอน add บัญชี-->
 <!DOCTYPE html>
 <html xmlns:layout="http://www.w3.org/1999/xhtml"
       layout:decorate="~{fragments/main_layout}"
@@ -7,6 +9,8 @@
 
     <h1>Open Bank Account</h1>
     <form th:action="@{/bankaccount}" method="POST">
+
+        <input type ="hidden" name = "id" value = "-1"/>
 
         <div class="form-group">
             <label for="inputCustomer">Customer Id</label>
@@ -22,7 +26,7 @@
             <label for="inputBalance">Balance</label>
             <input type="text" class="form-control" name="balance" id="inputBalance">
         </div>
-        <input type="hidden" name="id" value="-1"/>
+
         <div class="form-group">
             <input type="submit" class="btn btn-primary">
         </div>
@@ -49,10 +53,14 @@
             <td th:text="${account.type}"></td>
             <td th:text="${account.balance}"></td>
             <td>
-                <a class="btn btn-primary"
-                   th:href="@{/bankaccount/edit/{id}(id=${account.id})}">Edit</a>
+                <a class="btn btn-primary" th:href="@{/bankaccount/edit/{id}(id=${account.id})}">Edit</a>
+                <form th:action="@{/bankaccount/delete/{id}(id=${account.id})}" method="POST">
+                    <input type ="hidden" name = "id" value = "-1"/>
+                    <input type ="hidden" name = "customerId" value = "-1"/>
+                    <input type ="hidden" name = "balance" value = "-1"/>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </td>
-
         </tr>
         </tbody>
     </table>

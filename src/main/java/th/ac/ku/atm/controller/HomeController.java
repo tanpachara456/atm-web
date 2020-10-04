@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
     @RequestMapping("/home")
-    public String getHomePage(Model model) {
+    public String getHomePage(Model model){
         model.addAttribute("greeting", "Sawaddee");
-        return "home";
+        return "home"; //home template (home.html)
     }
 }

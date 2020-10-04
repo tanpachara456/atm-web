@@ -8,10 +8,11 @@ public class Customer {
 
     @Id
     private int id;
+
     private String name;
     private String pin;
 
-    public Customer() {}
+    public Customer(){}
 
     public Customer(int id, String name, String pin) {
         this.id = id;
@@ -23,20 +24,20 @@ public class Customer {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getPin() {
         return pin;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setPin(String pin) {
@@ -51,5 +52,4 @@ public class Customer {
                 ", pin='" + pin + '\'' +
                 '}';
     }
-
 }

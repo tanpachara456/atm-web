@@ -13,7 +13,6 @@ import th.ac.ku.atm.service.CustomerService;
 @Controller
 @RequestMapping("/login")
 public class LoginController {
-
     private CustomerService customerService;
     private BankAccountService bankAccountService;
 
@@ -23,26 +22,23 @@ public class LoginController {
     }
 
     @GetMapping
-    public String getLoginPage() {
-        return "login";   // return login.html
+    public String getLoginPage(){
+        return "login";
     }
 
     @PostMapping
-    public String login(@ModelAttribute Customer customer, Model model) {
-        Customer machtingCustomer = customerService.checkPin(customer);
-
-        if (machtingCustomer != null) {
-            model.addAttribute("customertitle",
-                    machtingCustomer.getName() + " Bank Accounts");
+    public String login(@ModelAttribute Customer customer, Model model){
+        Customer matchingCustomer = customerService.checkPin(customer);
+        if(matchingCustomer != null){
+            model.addAttribute("customertitle", matchingCustomer.getName()
+                                                            +" Bank Accounts");
             model.addAttribute("bankaccounts",
-                    bankAccountService.getCustomerBankAccount(customer.getId()));
+                        bankAccountService.getCustomerBankAccount(customer.getId()));
             return "customeraccount";
-        } else {
+        }
+        else{
             model.addAttribute("greeting", "Can't find customer");
             return "home";
         }
     }
-
 }
-
-
