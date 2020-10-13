@@ -8,16 +8,16 @@
 
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
-            <th>Type</th>
-            <th>Balance</th>
+            <tr>
+                <th>Type</th>
+                <th>Balance</th>
+            </tr>
         </thead>
-
         <tbody>
-            <tr th:each=" account: ${bankaccounts}">
+            <tr th:each=" account : ${bankaccounts}">
                 <td th:text="${account.type}"></td>
                 <td th:text="${account.balance}"></td>
             </tr>
         </tbody>
-
     </table>
 </div>
